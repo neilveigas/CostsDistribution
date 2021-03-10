@@ -1,0 +1,894 @@
+Sub distribute_costs_test()
+'
+' distribute_costs_test Macro
+' test
+'
+
+'
+    Dim UF_dict As Dictionary
+    Set UF_dict = New Dictionary
+    
+    UF_dict.Add "A1011", 10
+    UF_dict.Add "A1012", 10
+    UF_dict.Add "A1021", 10
+    UF_dict.Add "A1022", 10
+    UF_dict.Add "A1023", 10
+    UF_dict.Add "A1024", 10
+    UF_dict.Add "A1026", 10
+    UF_dict.Add "A1027", 10
+    UF_dict.Add "A1025", 9
+    UF_dict.Add "A1029", 9
+    UF_dict.Add "A1032", 9
+    UF_dict.Add "A2013", 9
+    UF_dict.Add "A2021", 9
+    UF_dict.Add "A2024", 9
+    UF_dict.Add "A2029", 9
+    UF_dict.Add "B1012", 9
+    UF_dict.Add "B1015", 9
+    UF_dict.Add "B1021", 9
+    UF_dict.Add "B1022", 9
+    UF_dict.Add "B1029", 9
+    UF_dict.Add "B2011", 9
+    UF_dict.Add "B3011", 9
+    UF_dict.Add "B3019", 9
+    UF_dict.Add "A1031", 8
+    UF_dict.Add "A1033", 8
+    UF_dict.Add "A2012", 8
+    UF_dict.Add "A2022", 8
+    UF_dict.Add "B1011", 8
+    UF_dict.Add "B1013", 8
+    UF_dict.Add "B2012", 8
+    UF_dict.Add "B2015", 8
+    UF_dict.Add "B2016", 8
+    UF_dict.Add "B2019", 8
+    UF_dict.Add "B3012", 8
+    UF_dict.Add "B3014", 8
+    UF_dict.Add "B3015", 8
+    UF_dict.Add "D4021", 8
+    UF_dict.Add "D4022", 8
+    UF_dict.Add "D4023", 8
+    UF_dict.Add "D4024", 8
+    UF_dict.Add "D4029", 8
+    UF_dict.Add "D4031", 8
+    UF_dict.Add "D5011", 8
+    UF_dict.Add "D5012", 8
+    UF_dict.Add "D5019", 8
+    UF_dict.Add "A1013", 7
+    UF_dict.Add "A1034", 7
+    UF_dict.Add "A1035", 7
+    UF_dict.Add "A1039", 7
+    UF_dict.Add "B2013", 7
+    UF_dict.Add "B2014", 7
+    UF_dict.Add "B2021", 7
+    UF_dict.Add "B2022", 7
+    UF_dict.Add "B2023", 7
+    UF_dict.Add "B2029", 7
+    UF_dict.Add "B2031", 7
+    UF_dict.Add "B2032", 7
+    UF_dict.Add "B2033", 7
+    UF_dict.Add "B2034", 7
+    UF_dict.Add "B2039", 7
+    UF_dict.Add "B3013", 7
+    UF_dict.Add "B3016", 7
+    UF_dict.Add "B3021", 7
+    UF_dict.Add "B3022", 7
+    UF_dict.Add "B3023", 7
+    UF_dict.Add "B3029", 7
+    UF_dict.Add "D4011", 7
+    UF_dict.Add "D4012", 7
+    UF_dict.Add "D4013", 7
+    UF_dict.Add "D4019", 7
+    UF_dict.Add "D4032", 7
+    UF_dict.Add "D4039", 7
+    UF_dict.Add "D4091", 7
+    UF_dict.Add "D4092", 7
+    UF_dict.Add "D4093", 7
+    UF_dict.Add "D4094", 7
+    UF_dict.Add "D4095", 7
+    UF_dict.Add "D4099", 7
+    UF_dict.Add "D5021", 7
+    UF_dict.Add "D5022", 7
+    UF_dict.Add "D5029", 7
+    UF_dict.Add "D5092", 7
+    UF_dict.Add "F1011", 7
+    UF_dict.Add "F1012", 7
+    UF_dict.Add "F1013", 7
+    UF_dict.Add "F1019", 7
+    UF_dict.Add "F1021", 7
+    UF_dict.Add "F1022", 7
+    UF_dict.Add "F1023", 7
+    UF_dict.Add "F1029", 7
+    UF_dict.Add "F1032", 7
+    UF_dict.Add "F1033", 7
+    UF_dict.Add "F1039", 7
+    UF_dict.Add "F1045", 7
+    UF_dict.Add "F1049", 7
+    UF_dict.Add "F2021", 7
+    UF_dict.Add "F2022", 7
+    UF_dict.Add "F2029", 7
+    UF_dict.Add "G1041", 7
+    UF_dict.Add "G1049", 7
+    UF_dict.Add "G4011", 7
+    UF_dict.Add "G4012", 7
+    UF_dict.Add "G4013", 7
+    UF_dict.Add "G4019", 7
+    UF_dict.Add "A2011", 6
+    UF_dict.Add "A2019", 6
+    UF_dict.Add "A2023", 6
+    UF_dict.Add "B1014", 6
+    UF_dict.Add "B1023", 6
+    UF_dict.Add "C2011", 6
+    UF_dict.Add "C2014", 6
+    UF_dict.Add "C2019", 6
+    UF_dict.Add "D2021", 6
+    UF_dict.Add "D2023", 6
+    UF_dict.Add "D2029", 6
+    UF_dict.Add "D3011", 6
+    UF_dict.Add "D3012", 6
+    UF_dict.Add "D3013", 6
+    UF_dict.Add "D3014", 6
+    UF_dict.Add "D3015", 6
+    UF_dict.Add "D3016", 6
+    UF_dict.Add "D3017", 6
+    UF_dict.Add "D3019", 6
+    UF_dict.Add "D3021", 6
+    UF_dict.Add "D3022", 6
+    UF_dict.Add "D3023", 6
+    UF_dict.Add "D3029", 6
+    UF_dict.Add "D3042", 6
+    UF_dict.Add "D3064", 6
+    UF_dict.Add "D5034", 6
+    UF_dict.Add "D5037", 6
+    UF_dict.Add "D5091", 6
+    UF_dict.Add "D5094", 6
+    UF_dict.Add "D5095", 6
+    UF_dict.Add "D5099", 6
+    UF_dict.Add "F1031", 6
+    UF_dict.Add "F1034", 6
+    UF_dict.Add "G1042", 6
+    UF_dict.Add "G2012", 6
+    UF_dict.Add "G2014", 6
+    UF_dict.Add "G2019", 6
+    UF_dict.Add "G2022", 6
+    UF_dict.Add "G3011", 6
+    UF_dict.Add "G3014", 6
+    UF_dict.Add "G3015", 6
+    UF_dict.Add "G3016", 6
+    UF_dict.Add "G3019", 6
+    UF_dict.Add "G3021", 6
+    UF_dict.Add "G3022", 6
+    UF_dict.Add "G3023", 6
+    UF_dict.Add "G3024", 6
+    UF_dict.Add "G3025", 6
+    UF_dict.Add "G3026", 6
+    UF_dict.Add "G3027", 6
+    UF_dict.Add "G3029", 6
+    UF_dict.Add "G3031", 6
+    UF_dict.Add "G3032", 6
+    UF_dict.Add "G3033", 6
+    UF_dict.Add "G3034", 6
+    UF_dict.Add "G3035", 6
+    UF_dict.Add "G3036", 6
+    UF_dict.Add "G3039", 6
+    UF_dict.Add "G4021", 6
+    UF_dict.Add "G4022", 6
+    UF_dict.Add "G4023", 6
+    UF_dict.Add "G4024", 6
+    UF_dict.Add "G4029", 6
+    UF_dict.Add "G4091", 6
+    UF_dict.Add "G4092", 6
+    UF_dict.Add "G4099", 6
+    UF_dict.Add "C2012", 5
+    UF_dict.Add "C2013", 5
+    UF_dict.Add "D1011", 5
+    UF_dict.Add "D1012", 5
+    UF_dict.Add "D1013", 5
+    UF_dict.Add "D1019", 5
+    UF_dict.Add "D2022", 5
+    UF_dict.Add "D2031", 5
+    UF_dict.Add "D2032", 5
+    UF_dict.Add "D2033", 5
+    UF_dict.Add "D2034", 5
+    UF_dict.Add "D2035", 5
+    UF_dict.Add "D2039", 5
+    UF_dict.Add "D2041", 5
+    UF_dict.Add "D2042", 5
+    UF_dict.Add "D2043", 5
+    UF_dict.Add "D2049", 5
+    UF_dict.Add "D2091", 5
+    UF_dict.Add "D2092", 5
+    UF_dict.Add "D2093", 5
+    UF_dict.Add "D2099", 5
+    UF_dict.Add "D3024", 5
+    UF_dict.Add "D3031", 5
+    UF_dict.Add "D3032", 5
+    UF_dict.Add "D3039", 5
+    UF_dict.Add "D3041", 5
+    UF_dict.Add "D3043", 5
+    UF_dict.Add "D3044", 5
+    UF_dict.Add "D3045", 5
+    UF_dict.Add "D3046", 5
+    UF_dict.Add "D3047", 5
+    UF_dict.Add "D3049", 5
+    UF_dict.Add "D3051", 5
+    UF_dict.Add "D3052", 5
+    UF_dict.Add "D3059", 5
+    UF_dict.Add "D3061", 5
+    UF_dict.Add "D3062", 5
+    UF_dict.Add "D3063", 5
+    UF_dict.Add "D3065", 5
+    UF_dict.Add "D3066", 5
+    UF_dict.Add "D3067", 5
+    UF_dict.Add "D3068", 5
+    UF_dict.Add "D3069", 5
+    UF_dict.Add "D3071", 5
+    UF_dict.Add "D3072", 5
+    UF_dict.Add "D3073", 5
+    UF_dict.Add "D3079", 5
+    UF_dict.Add "D3091", 5
+    UF_dict.Add "D3092", 5
+    UF_dict.Add "D3093", 5
+    UF_dict.Add "D3094", 5
+    UF_dict.Add "D3095", 5
+    UF_dict.Add "D3097", 5
+    UF_dict.Add "D3099", 5
+    UF_dict.Add "D5032", 5
+    UF_dict.Add "D5033", 5
+    UF_dict.Add "D5038", 5
+    UF_dict.Add "D5039", 5
+    UF_dict.Add "D5093", 5
+    UF_dict.Add "F1043", 5
+    UF_dict.Add "F1052", 5
+    UF_dict.Add "F1059", 5
+    UF_dict.Add "G2013", 5
+    UF_dict.Add "G2017", 5
+    UF_dict.Add "G2023", 5
+    UF_dict.Add "G2029", 5
+    UF_dict.Add "G2031", 5
+    UF_dict.Add "G2033", 5
+    UF_dict.Add "G2034", 5
+    UF_dict.Add "G3012", 5
+    UF_dict.Add "G3013", 5
+    UF_dict.Add "G3041", 5
+    UF_dict.Add "G3044", 5
+    UF_dict.Add "G3049", 5
+    UF_dict.Add "G3051", 5
+    UF_dict.Add "G3053", 5
+    UF_dict.Add "G3054", 5
+    UF_dict.Add "G3059", 5
+    UF_dict.Add "G3061", 5
+    UF_dict.Add "G3062", 5
+    UF_dict.Add "G3063", 5
+    UF_dict.Add "G3064", 5
+    UF_dict.Add "G3069", 5
+    UF_dict.Add "G3091", 5
+    UF_dict.Add "G3099", 5
+    UF_dict.Add "G4031", 5
+    UF_dict.Add "G4032", 5
+    UF_dict.Add "G4039", 5
+    UF_dict.Add "B1016", 4
+    UF_dict.Add "B1019", 4
+    UF_dict.Add "C1011", 4
+    UF_dict.Add "C1019", 4
+    UF_dict.Add "C1035", 4
+    UF_dict.Add "C1039", 4
+    UF_dict.Add "C2021", 4
+    UF_dict.Add "C2023", 4
+    UF_dict.Add "C2029", 4
+    UF_dict.Add "C3021", 4
+    UF_dict.Add "C3022", 4
+    UF_dict.Add "C3023", 4
+    UF_dict.Add "D1099", 4
+    UF_dict.Add "D2011", 4
+    UF_dict.Add "D2013", 4
+    UF_dict.Add "D2014", 4
+    UF_dict.Add "D2017", 4
+    UF_dict.Add "D2044", 4
+    UF_dict.Add "D3096", 4
+    UF_dict.Add "D5031", 4
+    UF_dict.Add "D5035", 4
+    UF_dict.Add "D5036", 4
+    UF_dict.Add "F1041", 4
+    UF_dict.Add "F1042", 4
+    UF_dict.Add "F1044", 4
+    UF_dict.Add "G2011", 4
+    UF_dict.Add "G2015", 4
+    UF_dict.Add "G2016", 4
+    UF_dict.Add "G2021", 4
+    UF_dict.Add "G2025", 4
+    UF_dict.Add "G2032", 4
+    UF_dict.Add "G2039", 4
+    UF_dict.Add "G2042", 4
+    UF_dict.Add "G2044", 4
+    UF_dict.Add "G3042", 4
+    UF_dict.Add "G3043", 4
+    UF_dict.Add "G3052", 4
+    UF_dict.Add "G3092", 4
+    UF_dict.Add "G9011", 4
+    UF_dict.Add "G9012", 4
+    UF_dict.Add "G9013", 4
+    UF_dict.Add "G9019", 4
+    UF_dict.Add "G9091", 4
+    UF_dict.Add "G9099", 4
+    UF_dict.Add "C1012", 3
+    UF_dict.Add "C1013", 3
+    UF_dict.Add "C1014", 3
+    UF_dict.Add "C1016", 3
+    UF_dict.Add "C1017", 3
+    UF_dict.Add "C1021", 3
+    UF_dict.Add "C1022", 3
+    UF_dict.Add "C1023", 3
+    UF_dict.Add "C1024", 3
+    UF_dict.Add "C1025", 3
+    UF_dict.Add "C1026", 3
+    UF_dict.Add "C1027", 3
+    UF_dict.Add "C1029", 3
+    UF_dict.Add "C1031", 3
+    UF_dict.Add "C1032", 3
+    UF_dict.Add "C1037", 3
+    UF_dict.Add "C2022", 3
+    UF_dict.Add "C3024", 3
+    UF_dict.Add "C3025", 3
+    UF_dict.Add "C3027", 3
+    UF_dict.Add "C3029", 3
+    UF_dict.Add "D1021", 3
+    UF_dict.Add "D1022", 3
+    UF_dict.Add "D1029", 3
+    UF_dict.Add "D1093", 3
+    UF_dict.Add "D1095", 3
+    UF_dict.Add "D1098", 3
+    UF_dict.Add "D2012", 3
+    UF_dict.Add "D2015", 3
+    UF_dict.Add "D2016", 3
+    UF_dict.Add "D2018", 3
+    UF_dict.Add "D2094", 3
+    UF_dict.Add "D2095", 3
+    UF_dict.Add "F1051", 3
+    UF_dict.Add "G1033", 3
+    UF_dict.Add "G1034", 3
+    UF_dict.Add "G1035", 3
+    UF_dict.Add "G1036", 3
+    UF_dict.Add "G1037", 3
+    UF_dict.Add "G2024", 3
+    UF_dict.Add "G2041", 3
+    UF_dict.Add "G2043", 3
+    UF_dict.Add "G2045", 3
+    UF_dict.Add "G2046", 3
+    UF_dict.Add "G2049", 3
+    UF_dict.Add "G2052", 3
+    UF_dict.Add "G2053", 3
+    UF_dict.Add "G2059", 3
+    UF_dict.Add "C1015", 2
+    UF_dict.Add "C1033", 2
+    UF_dict.Add "C1034", 2
+    UF_dict.Add "C1036", 2
+    UF_dict.Add "C3011", 2
+    UF_dict.Add "C3012", 2
+    UF_dict.Add "C3013", 2
+    UF_dict.Add "C3019", 2
+    UF_dict.Add "C3026", 2
+    UF_dict.Add "C3031", 2
+    UF_dict.Add "C3032", 2
+    UF_dict.Add "C3033", 2
+    UF_dict.Add "C3039", 2
+    UF_dict.Add "D1091", 2
+    UF_dict.Add "D1092", 2
+    UF_dict.Add "D1094", 2
+    UF_dict.Add "D1096", 2
+    UF_dict.Add "D1097", 2
+    UF_dict.Add "D2019", 2
+    UF_dict.Add "E1011", 2
+    UF_dict.Add "E1028", 2
+    UF_dict.Add "E1033", 2
+    UF_dict.Add "E1091", 2
+    UF_dict.Add "E1092", 2
+    UF_dict.Add "E2013", 2
+    UF_dict.Add "E2014", 2
+    UF_dict.Add "F2011", 2
+    UF_dict.Add "F2012", 2
+    UF_dict.Add "G1011", 2
+    UF_dict.Add "G1012", 2
+    UF_dict.Add "G1019", 2
+    UF_dict.Add "G1021", 2
+    UF_dict.Add "G1022", 2
+    UF_dict.Add "G1023", 2
+    UF_dict.Add "G1024", 2
+    UF_dict.Add "G1029", 2
+    UF_dict.Add "G1031", 2
+    UF_dict.Add "G1039", 2
+    UF_dict.Add "G2047", 2
+    UF_dict.Add "G2048", 2
+    UF_dict.Add "G2051", 2
+    UF_dict.Add "G2054", 2
+    UF_dict.Add "G2055", 2
+    UF_dict.Add "G2056", 2
+    UF_dict.Add "G2057", 2
+    UF_dict.Add "_0001", 1
+    UF_dict.Add "E1012", 1
+    UF_dict.Add "E1013", 1
+    UF_dict.Add "E1014", 1
+    UF_dict.Add "E1015", 1
+    UF_dict.Add "E1016", 1
+    UF_dict.Add "E1017", 1
+    UF_dict.Add "E1018", 1
+    UF_dict.Add "E1019", 1
+    UF_dict.Add "E1021", 1
+    UF_dict.Add "E1022", 1
+    UF_dict.Add "E1023", 1
+    UF_dict.Add "E1024", 1
+    UF_dict.Add "E1025", 1
+    UF_dict.Add "E1026", 1
+    UF_dict.Add "E1027", 1
+    UF_dict.Add "E1029", 1
+    UF_dict.Add "E1031", 1
+    UF_dict.Add "E1032", 1
+    UF_dict.Add "E1039", 1
+    UF_dict.Add "E1093", 1
+    UF_dict.Add "E1094", 1
+    UF_dict.Add "E1095", 1
+    UF_dict.Add "E1097", 1
+    UF_dict.Add "E1099", 1
+    UF_dict.Add "E2011", 1
+    UF_dict.Add "E2012", 1
+    UF_dict.Add "E2015", 1
+    UF_dict.Add "E2016", 1
+    UF_dict.Add "E2019", 1
+    UF_dict.Add "E2021", 1
+    UF_dict.Add "E2022", 1
+    UF_dict.Add "E2023", 1
+    UF_dict.Add "E2024", 1
+    UF_dict.Add "E2029", 1
+    UF_dict.Add "G1032", 1
+    
+    
+    Range("E13").Select
+    ActiveWorkbook.Worksheets("AssetCALC Import v1.6").ListObjects("Table4").sort. _
+        SortFields.Clear
+    ActiveWorkbook.Worksheets("AssetCALC Import v1.6").ListObjects("Table4").sort. _
+        SortFields.Add2 Key:=Range("Table4[[#All],[Location 1 Name]]"), SortOn:= _
+        xlSortOnValues, Order:=xlAscending, DataOption:=xlSortNormal
+    With ActiveWorkbook.Worksheets("AssetCALC Import v1.6").ListObjects("Table4"). _
+        sort
+        .Header = xlYes
+        .MatchCase = False
+        .Orientation = xlTopToBottom
+        .SortMethod = xlPinYin
+        .Apply
+    End With
+    
+' Currently sorted by location 1
+    
+    
+    'Dim answer As Integer
+    
+    'answer = MsgBox("Is it Ok to move costs in 2019?", vbQuestion + vbYesNo + vbDefaultButton2, "Define parameter")
+
+    'If answer = vbYes Then
+    '    start_year = 2019
+    'Else
+    '    start_year = 2020
+   ' End If
+    
+    
+    Range("A3").Select
+    
+    Dim Lrow As Long
+    Lrow = L_row
+        
+    MsgBox Lrow
+    
+    Dim Firow As Long
+    Firow = Fi_row
+    MsgBox Firow
+    
+    Dim locations(30) As String
+    Dim locIndex As Integer
+        
+    locIndex = 0
+    
+    locations(locIndex) = Cells(3, 1)
+    locIndex = 1
+    
+    Dim i As Integer
+    'Dim str_disp As Variant
+    
+    'str_disp = locations(locIndex) + vbCrLf
+    
+    For i = 4 To Lrow
+        If Cells(i, 1) = Cells(i - 1, 1) Then
+            
+        Else
+            locations(locIndex) = Cells(i, 1)
+            locIndex = locIndex + 1
+            'str_disp = locations(locIndex) + vbCrLf
+        End If
+    Next i
+        
+ '   MsgBox Join(locations, vbCrLf)
+ 
+    
+    
+    Dim lookup_fcol2 As Range
+    Set lookup_fcol2 = Range("A1:AZ20").Find("Deleted")
+    Dim fcol2 As Long
+    fcol2 = lookup_fcol2.Column
+    
+    Dim lookup_ptype As Range
+    Set lookup_ptype = Range("A1:AZ20").Find("Plan Type")
+    Dim ptype_col As Long
+    ptype_col = lookup_ptype.Column
+    
+    Dim lookup_rul2 As Range
+    Set lookup_rul2 = Range("A1:AZ20").Find("RUL")
+    Dim rul2_col As Long
+    rul2_col = lookup_rul2.Column
+    
+    Dim lookup_yearSch2 As Range
+    Set lookup_yearSch2 = Range("A1:AZ20").Find("Year Scheduled")
+    Dim yearSch2_col As Long
+    yearSch2_col = lookup_yearSch2.Column
+    
+    Dim lookup_curY As Range
+    Set lookup_curY = Range("A1:AZ20").Find("Fiscal Year Observed")
+    Dim cur_year_col As Long
+    cur_year_col = lookup_curY.Column
+    
+    Dim lookup_ufc As Range
+    Set lookup_ufc = Range("A1:AZ20").Find("Uniformat")
+    Dim ufc_col As Long
+    ufc_col = lookup_ufc.Column
+    
+    Dim lookup_action As Range
+    Set lookup_action = Range("A1:AZ20").Find("Action")
+    Dim act_col As Long
+    act_col = lookup_action.Column
+    
+    Dim cur_year As Integer
+    cur_year = Cells(3, cur_year_col)
+    
+    'Uniformat dictonary call
+    Dim ufp As Integer
+    
+    
+    
+    
+    'Section that calculates priority score
+    
+    Dim pScore As Long
+    Dim ufc As String
+    
+      
+    
+     Cells(2, fcol2 + 1) = "Priority Score"
+     Cells(3, fcol2 + 1).Select
+     
+     Cells(2, fcol2 + 2) = "Replacement year"
+     
+     
+     For k = 3 To Lrow
+     
+        pScore = 0
+     
+        If Cells(k, ptype_col) = "Safety" Then
+            pScore = pScore + 90
+        ElseIf InStr(Cells(k, ptype_col), "Performance") > 0 Then
+            pScore = pScore + 81
+        ElseIf InStr(Cells(k, ptype_col), "Environ") > 0 Then
+            pScore = pScore + 72
+        ElseIf InStr(Cells(k, ptype_col), "Accessibility") > 0 Then
+            pScore = pScore + 63
+        ElseIf InStr(Cells(k, ptype_col), "Modern") > 0 Then
+            pScore = pScore + 54
+        Else
+            pScore = pScore + 45
+        End If
+        
+    
+        If IsEmpty(Cells(k, yearSch2_col)) Then
+            
+            'adding replacemnt year( but it does not account for recurring costs)
+            Cells(k, fcol + 2) = cur_year + Cells(k, rul2_col)
+            
+            If (Cells(k, rul2_col) + cur_year) = cur_year Then
+                pScore = pScore + 0.09
+            ElseIf (Cells(k, rul2_col) + cur_year) = cur_year + 1 Then
+                pScore = pScore + 0.08
+            ElseIf (Cells(k, rul2_col) + cur_year) = cur_year + 2 Then
+                pScore = pScore + 0.07
+            ElseIf (Cells(k, rul2_col) + cur_year) = cur_year + 3 Then
+                pScore = pScore + 0.07
+            ElseIf (Cells(k, rul2_col) + cur_year) = cur_year + 4 Then
+                pScore = pScore + 0.06
+            ElseIf (Cells(k, rul2_col) + cur_year) = cur_year + 5 Then
+                pScore = pScore + 0.05
+            ElseIf (Cells(k, rul2_col) + cur_year) = cur_year + 6 Then
+                pScore = pScore + 0.04
+            ElseIf (Cells(k, rul2_col) + cur_year) = cur_year + 7 Then
+                pScore = pScore + 0.03
+            ElseIf (Cells(k, rul2_col) + cur_year) = cur_year + 8 Then
+                pScore = pScore + 0.02
+            ElseIf (Cells(k, rul2_col) + cur_year) = cur_year + 9 Then
+                pScore = pScore + 0.01
+            End If
+            
+            
+          Cells(k, fcol + 2) = Cells(k, yearSch2_col)
+        ElseIf Cells(k, yearSch2_col) = cur_year Then
+            pScore = pScore + 0.09
+        ElseIf Cells(k, yearSch2_col) = cur_year + 1 Then
+            pScore = pScore + 0.08
+        ElseIf Cells(k, yearSch2_col) = cur_year + 2 Then
+            pScore = pScore + 0.07
+        ElseIf Cells(k, yearSch2_col) = cur_year + 3 Then
+            pScore = pScore + 0.07
+        ElseIf Cells(k, yearSch2_col) = cur_year + 4 Then
+            pScore = pScore + 0.06
+        ElseIf Cells(k, yearSch2_col) = cur_year + 5 Then
+            pScore = pScore + 0.05
+        ElseIf Cells(k, yearSch2_col) = cur_year + 6 Then
+            pScore = pScore + 0.04
+        ElseIf Cells(k, yearSch2_col) = cur_year + 7 Then
+            pScore = pScore + 0.03
+        ElseIf Cells(k, yearSch2_col) = cur_year + 8 Then
+            pScore = pScore + 0.02
+        ElseIf Cells(k, yearSch2_col) = cur_year + 9 Then
+            pScore = pScore + 0.01
+        End If
+                   
+    'Building priority set as default
+    pScore = pScore + 0.9
+  
+    'UF priority
+    ufc = Cells(k, ufc_col)
+    ufp = UF_dict.Item(ufc) - 1
+    pScore = pScore + ufp
+    
+    'If its paint
+    If InStr(Cells(k, act_col), "Paint") > 0 Then
+        pScore = pScore - 0.1
+    End If
+    
+    Cells(k, fcol2 + 1) = pScore
+    
+    Next k
+    
+    With UserForm1.ListBox1
+        .List = locations
+  
+    End With
+        
+    UserForm1.Show
+    
+    
+    
+    ActiveWindow.ScrollColumn = 2
+    ActiveWindow.ScrollColumn = 29
+    Range("AI3").Select
+    ActiveWorkbook.Worksheets("AssetCALC Import v1.6").ListObjects("Table4").sort. _
+        SortFields.Clear
+    ActiveWorkbook.Worksheets("AssetCALC Import v1.6").ListObjects("Table4").sort. _
+        SortFields.Add2 Key:=Range("Table4[[#All],[Total Cost]]"), SortOn:= _
+        xlSortOnValues, Order:=xlDescending, DataOption:=xlSortNormal
+    With ActiveWorkbook.Worksheets("AssetCALC Import v1.6").ListObjects("Table4"). _
+        sort
+        .Header = xlYes
+        .MatchCase = False
+        .Orientation = xlTopToBottom
+        .SortMethod = xlPinYin
+        .Apply
+    End With
+    
+    ActiveWindow.ScrollColumn = 28
+    ActiveWindow.ScrollColumn = 22
+    ActiveWorkbook.Worksheets("AssetCALC Import v1.6").ListObjects("Table4").sort. _
+        SortFields.Clear
+    ActiveWorkbook.Worksheets("AssetCALC Import v1.6").ListObjects("Table4").sort. _
+        SortFields.Add2 Key:=Range("Table4[[#All],[RUL]]"), SortOn:=xlSortOnValues _
+        , Order:=xlAscending, DataOption:=xlSortNormal
+    With ActiveWorkbook.Worksheets("AssetCALC Import v1.6").ListObjects("Table4"). _
+        sort
+        .Header = xlYes
+        .MatchCase = False
+        .Orientation = xlTopToBottom
+        .SortMethod = xlPinYin
+        .Apply
+    End With
+    
+    ActiveWindow.ScrollColumn = 20
+    ActiveWindow.ScrollColumn = 19
+    ActiveSheet.ListObjects("Table4").Range.AutoFilter Field:=27, Criteria1:= _
+        "<>"
+    ActiveSheet.ListObjects("Table4").Range.AutoFilter Field:=27
+    Range("Z3").Select
+    ActiveCell.FormulaR1C1 = "1"
+    Range("Z4").Select
+    ActiveCell.FormulaR1C1 = "2"
+    Range("Z5").Select
+    ActiveCell.FormulaR1C1 = "3"
+    Range("Z6").Select
+    ActiveWindow.ScrollColumn = 20
+    ActiveWindow.ScrollColumn = 21
+    ActiveWindow.ScrollColumn = 22
+    Rows("3:3").Select
+    Range("V3").Activate
+    
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .Color = 15773696
+        .TintAndShade = 0
+        .PatternTintAndShade = 0
+    End With
+    
+    Rows("4:4").Select
+    Range("V4").Activate
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .Color = 15773696
+        .TintAndShade = 0
+        .PatternTintAndShade = 0
+    End With
+    
+    Rows("5:5").Select
+    Range("V5").Activate
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .Color = 15773696
+        .TintAndShade = 0
+        .PatternTintAndShade = 0
+    End With
+    
+    Range("Z11").Select
+    
+End Sub
+
+Public Function distribute(loc As String)
+    
+    Dim lookup_loc As Range
+    Set lookup_loc = Range("A1:AZ20").Find("Location 1 Name")
+    Dim loc_col As Long
+    loc_col = lookup_loc.Column
+    
+    Dim lookup_id As Range
+    Set lookup_id = Range("A1:AZ20").Find("Observation Id")
+    Dim id_col As Long
+    id_col = lookup_id.Column
+    
+    Dim lookup_rul As Range
+    Set lookup_rul = Range("A1:AZ20").Find("RUL")
+    Dim rul_col As Long
+    rul_col = lookup_rul.Column
+    
+    Dim lookup_yearSch As Range
+    Set lookup_yearSch = Range("A1:AZ20").Find("Year Scheduled")
+    Dim yearSch_col As Long
+    yearSch_col = lookup_yearSch.Column
+    
+    Dim lookup_totCost As Range
+    Set lookup_totCost = Range("A1:AZ20").Find("Total Cost")
+    Dim totCost_col As Long
+    totCost_col = lookup_totCost.Column
+    
+    Dim lookup_eul As Range
+    Set lookup_eul = Range("A1:AZ20").Find("Lifespan")
+    Dim eul_col As Long
+    eul_col = lookup_eul.Column
+    
+    Dim lookup_fcol As Range
+    Set lookup_fcol = Range("A1:AZ20").Find("Deleted")
+    Dim fcol As Long
+    fcol = lookup_fcol.Column
+    
+    Dim pcol As Long
+    pcol = fcol + 1
+    
+    Range("A3").Select
+    ActiveSheet.ListObjects("Table4").Range.AutoFilter Field:=1, Criteria1:=loc
+    
+    Dim cur_lrow As Long
+    cur_lrow = L_row
+    'MsgBox cur_lrow
+    
+    Range("A2").Select
+    Dim cur_firow As Long
+    cur_firow = Fi_row
+    'MsgBox Fi_row
+
+    Dim totCos_arr(2019 To 2039) As Currency
+    
+        For i = cur_firow To cur_lrow
+          If Cells(i, rul_col) < 21 Then
+                If IsEmpty(Cells(i, yearSch_col)) Then
+                    For j = 0 To 20
+                        totCos_arr(2019 + Cells(i, rul_col) + (Cells(i, eul_col) * j)) = Cells(i, totCost_col)
+                        If (2019 + Cells(i, rul_col) + (Cells(i, eul_col) * (j + 1))) > 2039 Then Exit For
+                    Next j
+                Else
+                        totCos_arr(Cells(i, yearSch_col)) = Cells(i, totCost_col)
+                
+                End If
+          End If
+        Next i
+    
+    'MsgBox Join(totCos_arr, vbCrLf)
+    
+    
+    Dim max As Currency
+    Dim max_year As Integer
+    Dim sum As Currency
+    Dim avg As Currency
+    
+    max = 0
+    sum = 0
+    
+    sort_pri
+    
+    
+ 
+    'MsgBox max
+    
+    
+    
+    'MsgBox avg
+      
+   Dim counter As Integer
+   
+   
+    Do
+   
+    'Only distributes costs for the next 10 years for now and does not alter anything in the current year
+    For p = 2020 To 2029
+        sum = sum + totCos_arr(p)
+        If totCos_arr(p) > max Then
+            max = totCos_arr(p)
+            max_year = p
+        End If
+    Next p
+  
+    avg = sum / 10
+    
+  'code assumes each year is only 2021 and above for now, need to deal with year 2020
+   If totCos_arr(max_year + 1) > totCos_arr(max_year - 1) Then
+         If IsEmpty(Cells(i, yearSch_col)) Then
+            Cells (cur_firow)
+  
+   If Cells(cur_firow, pcol) > 60 Then
+    
+        
+  ' Loop Until max > (avg * 0.1) + avg
+    
+    
+End Function
+
+Public Function L_row() As Long
+   
+   Range("A10000").Select
+   Selection.End(xlUp).Select
+   L_row = ActiveCell.Row
+    
+End Function
+Public Function Fi_row() As Long
+
+    With Worksheets("AssetCALC Import v1.6").AutoFilter.Range
+        Range("A" & .Offset(1, 0).SpecialCells(xlCellTypeVisible)(1).Row).Select
+        Fi_row = ActiveCell.Row
+    End With
+    
+End Function
+Public Function sort_pri()
+
+    ActiveWorkbook.Worksheets("AssetCALC Import v1.6").ListObjects("Table4").sort. _
+        SortFields.Add2 Key:=Range("Table4[[#All],[Priority Score]]"), SortOn:= _
+        xlSortOnValues, Order:=xlAscending, DataOption:=xlSortNormal
+    With ActiveWorkbook.Worksheets("AssetCALC Import v1.6").ListObjects("Table4"). _
+        sort
+        .Header = xlYes
+        .MatchCase = False
+        .Orientation = xlTopToBottom
+        .SortMethod = xlPinYin
+        .Apply
+    End With
+    
+End Function
