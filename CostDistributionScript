@@ -848,17 +848,7 @@ Public Function distribute(loc As String)
     Next p
   
     avg = sum / 10
-    
-  'code assumes each year is only 2021 and above for now, need to deal with year 2020
-   If totCos_arr(max_year + 1) > totCos_arr(max_year - 1) Then
-         If IsEmpty(Cells(i, yearSch_col)) Then
-            Cells (cur_firow)
-  
-   If Cells(cur_firow, pcol) > 60 Then
-    
-        
-  ' Loop Until max > (avg * 0.1) + avg
-    
+   
     
 End Function
 
